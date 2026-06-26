@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Express – Package Tracking</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       BACKGROUND LAYERS (always visible)
+  ═══════════════════════════════════════ -->
+  <div class="bg-particles" id="bgParticles"></div>
+  <div class="floating-hearts-bg" id="floatingHeartsBg"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCREEN 1 – Delivery Tracking
+  ═══════════════════════════════════════ -->
+  <section class="screen active" id="screen1">
+    <div class="screen-inner">
+
+      <!-- Header -->
+      <header class="brand-header">
+        <div class="brand-logo">
+          <span class="logo-icon"><i class="fa-solid fa-box-heart"></i></span>
+          <span class="logo-text">Love<span class="accent">Express</span></span>
+        </div>
+        <p class="brand-tagline">Premium Delivery — Since Always</p>
+      </header>
+
+      <!-- Tracking Card -->
+      <div class="glass-card tracking-card">
+        <div class="tracking-label">
+          <i class="fa-solid fa-barcode"></i> Tracking Number
+        </div>
+        <div class="tracking-number">LV-2026-LOVE</div>
+
+        <div class="receiver-row">
+          <i class="fa-solid fa-circle-user"></i>
+          <div>
+            <span class="receiver-label">Recipient</span>
+            <span class="receiver-name">My Girlfriend ❤️</span>
+          </div>
+        </div>
+
+        <!-- Status Timeline -->
+        <div class="status-timeline">
+          <div class="status-step done">
+            <div class="step-dot"><i class="fa-solid fa-check"></i></div>
+            <div class="step-info">
+              <span class="step-title">Package Created</span>
+              <span class="step-time">Crafted with love ❤️</span>
+            </div>
+          </div>
+          <div class="status-step done">
+            <div class="step-dot"><i class="fa-solid fa-check"></i></div>
+            <div class="step-info">
+              <span class="step-title">Courier Picked Up</span>
+              <span class="step-time">Handled with care 💌</span>
+            </div>
+          </div>
+          <div class="status-step done pulse-step">
+            <div class="step-dot"><i class="fa-solid fa-check"></i></div>
+            <div class="step-info">
+              <span class="step-title">On The Way</span>
+              <span class="step-time">Almost there… 🚚</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button class="btn-primary" id="trackBtn">
+          <i class="fa-solid fa-magnifying-glass"></i> Track Package
+        </button>
+      </div>
+
+      <p class="footer-note">© Love Express · Delivering Feelings Since Day One</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SCREEN 2 – Loading + Truck
+  ═══════════════════════════════════════ -->
+  <section class="screen" id="screen2">
+    <div class="screen-inner">
+
+      <header class="brand-header mini">
+        <div class="brand-logo">
+          <span class="logo-icon"><i class="fa-solid fa-box-heart"></i></span>
+          <span class="logo-text">Love<span class="accent">Express</span></span>
+        </div>
+      </header>
+
+      <!-- Loading Phase -->
+      <div class="glass-card loading-card" id="loadingCard">
+        <div class="loading-icon-wrap">
+          <i class="fa-solid fa-satellite-dish loading-icon"></i>
+        </div>
+        <p class="loading-label" id="loadingLabel">Checking package...</p>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-pct" id="progressPct">0%</span>
+      </div>
+
+      <!-- Truck Phase -->
+      <div class="truck-scene" id="truckScene" style="display:none;">
+        <div class="glass-card courier-card">
+          <p class="courier-status">
+            <i class="fa-solid fa-location-dot pulse-icon"></i>
+            Courier is approaching your location…
+          </p>
+        </div>
+
+        <!-- Road -->
+        <div class="road">
+          <div class="road-line"></div>
+          <div class="truck" id="truck">
+            <!-- SVG Truck -->
+            <svg viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg" class="truck-svg">
+              <!-- Trailer body -->
+              <rect x="0" y="20" width="110" height="46" rx="4" fill="#FF5E8A"/>
+              <!-- Heart on trailer -->
+              <text x="55" y="50" text-anchor="middle" font-size="22" fill="white">❤️</text>
+              <!-- Cab -->
+              <rect x="110" y="30" width="46" height="36" rx="5" fill="#e04070"/>
+              <!-- Windscreen -->
+              <rect x="116" y="35" width="26" height="18" rx="3" fill="#ffe8ef"/>
+              <!-- Wheels -->
+              <circle cx="25"  cy="68" r="10" fill="#333"/>
+              <circle cx="25"  cy="68" r="5"  fill="#999"/>
+              <circle cx="80"  cy="68" r="10" fill="#333"/>
+              <circle cx="80"  cy="68" r="5"  fill="#999"/>
+              <circle cx="138" cy="68" r="10" fill="#333"/>
+              <circle cx="138" cy="68" r="5"  fill="#999"/>
+              <!-- Headlight -->
+              <circle cx="155" cy="46" r="5" fill="#fffacd"/>
+            </svg>
+          </div>
+          <div class="road-line"></div>
+        </div>
+
+        <!-- Delivered Message -->
+        <div class="glass-card delivered-card" id="deliveredCard" style="display:none;">
+          <div class="delivered-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <p class="delivered-title">Package Delivered Successfully</p>
+          <p class="delivered-sub">Tap below to reveal what's inside 🎁</p>
+          <button class="btn-primary" id="openPkgBtn">
+            <i class="fa-solid fa-box-open"></i> Open Package
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SCREEN 3 – Package Opening
+  ═══════════════════════════════════════ -->
+  <section class="screen" id="screen3">
+    <div class="screen-inner center-flex">
+
+      <p class="tap-hint" id="tapHint">Tap the box to open it 🎁</p>
+
+      <div class="package-wrap" id="packageWrap">
+        <!-- Box lid -->
+        <div class="box-lid" id="boxLid">
+          <div class="lid-ribbon"></div>
+          <div class="lid-bow">
+            <div class="bow-left"></div>
+            <div class="bow-right"></div>
+          </div>
+        </div>
+        <!-- Box body -->
+        <div class="box-body">
+          <div class="box-stripe"></div>
+        </div>
+      </div>
+
+      <!-- Sparkle container -->
+      <div class="sparkle-container" id="sparkleContainer"></div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SCREEN 4 – Letter / Message
+  ═══════════════════════════════════════ -->
+  <section class="screen" id="screen4">
+    <div class="screen-inner center-flex">
+
+      <!-- Envelope -->
+      <div class="envelope-wrap" id="envelopeWrap">
+        <div class="envelope" id="envelope">
+          <div class="env-flap" id="envFlap"></div>
+          <div class="env-body"></div>
+          <div class="env-heart"><i class="fa-solid fa-heart"></i></div>
+        </div>
+      </div>
+
+      <!-- Letter Card -->
+      <div class="glass-card letter-card" id="letterCard" style="display:none;">
+
+        <!-- Photo placeholder -->
+        <div class="photo-frame">
+          <div class="photo-placeholder">
+            <i class="fa-solid fa-heart"></i>
+            <!-- Replace the line below with an <img> tag to add a real photo -->
+            <!-- <img src="your-photo.jpg" alt="Our photo" /> -->
+          </div>
+        </div>
+
+        <!-- Animated message lines -->
+        <div class="letter-lines" id="letterLines">
+          <p class="letter-line" data-delay="0">Congratulations ❤️</p>
+          <p class="letter-line" data-delay="900">This package doesn't contain expensive gifts.</p>
+          <p class="letter-line" data-delay="1900">It contains someone…</p>
+          <p class="letter-line" data-delay="2900">who loves you every single day.</p>
+          <p class="letter-line" data-delay="4100">Thank you for always being by my side.</p>
+          <p class="letter-line" data-delay="5300">You are my favorite person.</p>
+          <p class="letter-line" data-delay="6500">I love you more than words can describe.</p>
+        </div>
+
+        <button class="btn-primary btn-accept" id="acceptBtn" style="display:none;">
+          <i class="fa-solid fa-heart"></i> Accept This Package ❤️
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SCREEN 5 – Final / Accepted
+  ═══════════════════════════════════════ -->
+  <section class="screen" id="screen5">
+    <div class="screen-inner center-flex">
+
+      <div class="final-wrap glass-card">
+        <div class="final-check"><i class="fa-solid fa-circle-check"></i></div>
+
+        <p class="final-title">Package Accepted Successfully ❤️</p>
+
+        <div class="final-notice">
+          <p>You have successfully received unlimited love.</p>
+          <p><i class="fa-solid fa-triangle-exclamation"></i> This package cannot be refunded.</p>
+        </div>
+
+        <div class="final-love">I Love You ❤️</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Confetti canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
